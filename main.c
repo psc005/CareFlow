@@ -160,8 +160,15 @@ void addPatient(Patient **head, Patient *newPatient){
     current->next = newPatient;
 }
 
-void printPatient(Patient *Patient){
-    
+void printPatient(Patient* patient) {
+    if (isEmpty(patient))
+        return;
+    printf("%s\n", patient->name);
+    printf("%d\n", patient->age);
+    printf("%d\n", patient->painLevel);
+    printf("%d\n", patient->priorityScore);
+
+    printf("\n\n");
 }
 
 void displayPatients(Patient *head){
