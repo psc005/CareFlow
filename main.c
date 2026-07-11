@@ -9,6 +9,7 @@ typedef struct Patient{
     int painLevel; 
     int severity; 
     int priorityScore;
+    int waitTime; 
     struct Patient *next; 
 }Patient; 
 
@@ -16,11 +17,11 @@ typedef struct Patient{
 void displayMenu(); //complete
 int isEmpty(Patient **head); //complete 
 Patient* createPatient(); //complete 
-void printPatient(Patient *Patient); 
+void printPatient(Patient *Patient); //complete 
 int calculatePriority(Patient *Patient); //complete 
-void addPatient(Patient **head, Patient *newPatient); 
-void displayPatients(Patient *head); 
-Patient* searchPatient(Patient *head, char *name); 
+void addPatient(Patient **head, Patient *newPatient); //complete 
+void displayPatients(Patient *head); //complete 
+Patient* searchPatient(Patient *head, char *name); //complete 
 void editPatient(Patient **Head); 
 void showNextPatient(Patient **head); //complete 
 void displayStatistics(Patient *head); //complete 
@@ -114,6 +115,7 @@ Patient* createPatient(){
     if (ptr == NULL)
         return NULL;
     strcpy(newPatient->name, ptr);
+    newPatient->waitTime = 0;
     newPatient->next = NULL;
 
     return newPatient;
