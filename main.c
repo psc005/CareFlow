@@ -74,7 +74,7 @@ int main(){
         default:
             printf("Invalid choice.\n"); 
         
-    }
+    }while(choice != 6);
 
 freeList(head); 
     
