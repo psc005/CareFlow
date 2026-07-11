@@ -252,8 +252,64 @@ Patient* searchPatient(Patient *head, char *name){
     
 }
 
-void editPatient(Patient **Head){
-    
+void editPatient(Patient** Head) {
+    char* searchName = malloc(50 * sizeof(char));
+    printf("Enter a name:\n");
+    scanf("%s", searchName);
+
+    if (*Head == NULL) {
+        free(searchName);
+        return;
+    }
+
+    Patient* found = searchPatient(*Head, searchName);
+    if (found == NULL) {
+        free(searchName);
+        return;
+    }
+
+    printPatient(found);
+
+    int choice;
+    do {
+        printf("1. Edit name\n2. Edit age\n3. Edit pain level\n4. Exit\n");
+        scanf("%d", &choice);
+
+        switch (choice) {
+        case 1: {
+            char* newName = malloc(50 * sizeof(char));
+            printf("Enter new name:\n");
+            scanf("%s", newName);
+            free(found->name);
+            found->name = malloc((strlen(newName) + 1) * sizeof(char));
+            strcpy(found->name, newName);
+            free(newName);
+            break;
+        }
+        case 2: {
+            int newAge;
+            printf("Enter new age:\n");
+            scanf("%d", &newAge);
+            found->age = newAge;
+            break;
+        }
+        case 3: {
+            int newPainLevel;
+            printf("Enter new pain level:\n");
+            scanf("%d", &newPainLevel);
+            found->painLevel = newPainLevel;
+            found->priorityScore = calculatePriority(found);
+            break;
+        }
+        case 4:
+            break;
+        }
+
+        printPatient(found);
+
+    } while (choice != 4);
+
+    free(searchName);
 }
 
 void showNextPatient(Patient **head){
