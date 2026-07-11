@@ -33,37 +33,39 @@ int main(){
     Patient *head = NULL; 
     int choice; 
     displayMenu(); 
-    do{
-        switch(choice){
+    switch(choice){
         case 1:
-            //create a patient 
-            //calculate priority 
-            //add patient to the list 
+            newPatient = createPatient(); 
+            if(newPatient){
+                addPatient(&head, newPatient); 
+                printf("Patient added successfully!\n"); 
+            }
             break; 
 
         case 2:
-            //display all waiting patients
+            showNextPatient(&head); 
             break; 
 
         case 3:
-            //call the next patient 
+            editPatient(&head); 
             break; 
 
         case 4:
-            //edit patient information 
+            displayPatients(head); 
+            break; 
+
+        case 5:
+            displayStatistics(head); 
             break; 
 
         case 6:
-            //display statistics
-            break; 
-
-        case 7:
-            //exit the program 
+            printf("Exiting the program...\n"); 
             break;
 
+        default:
+            printf("Invalid choice.\n"); 
         
-        }
-    } while(choice != 7); 
+    }
 
 freeList(head); 
     
