@@ -4,7 +4,7 @@
 
 //patient stack 
 typedef struct Patient{
-    char name[50];
+    char name;
     int age; 
     int painLevel; 
     int severity; 
