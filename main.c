@@ -229,7 +229,7 @@ void displayPatients(Patient *head){
     
     while(currentPtr){
         printPatient(currentPtr); 
-        current = current->next; 
+        currentPtr = currentPtr->next; 
     }
 
 }
