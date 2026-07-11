@@ -222,6 +222,48 @@ void showNextPatient(Patient **head){
 }
 
 void displayStatistics(Patient *head){
+    void displayStatistics(Patient *head){
+    if(isEmpty(&head)){
+        printf("No patients currently waiting.\n"); 
+        return;
+    }
+
+    int totalPatients = 0; 
+    int crital = 0; 
+    int urgemt = 0; 
+    int nonUrgent = 0; 
+
+    Patient *highestPriority = head; 
+    Patient *curr = head; 
+
+    while(!curr){
+        totalPatients++; 
+        if(curr->severity == 3){
+            critical++; 
+        }
+        else if(curr->severity == 2){
+            urgent++; 
+        }
+        else{
+            nonUrgent++; 
+        }
+
+        curr = curr->next; 
+    }
+
+    printf("\nER Statistics:\n********************\n");
+    printf("Total patients waiting: %d\n\n", totalPatients); 
+    printf("Highest priority patient:\n"); 
+    printf(Name: %s\n", highestPriority->name); 
+    printf("Priority Score: %d\n\n", highestPriority->priorityScore); 
+    printf("Severity Breakdown:\n");
+    printf("Critical: %d\n", critical);
+    printf("Urgent: %d\n", urgent);
+    printf("Non-Urgent: %d\n", nonUrgent);
+
+    printf("********************\n\n"); 
+    
+}
 }
 
 void freeList(Patient *head){
