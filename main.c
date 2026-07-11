@@ -219,6 +219,18 @@ void editPatient(Patient **Head){
 }
 
 void showNextPatient(Patient **head){
+    if(isEmpty(head)){
+        printf("No patients currently waiting.\n"); 
+        return; 
+    }
+
+    Patient *nextPatient = *head; 
+
+    printf("Next Patient:\n"); 
+    printPatient(nextPatient); 
+    *head = nextPatient->next; 
+    free(nextPatient->name); 
+    free(nextPatient); 
 }
 
 void displayStatistics(Patient *head){
