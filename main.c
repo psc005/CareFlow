@@ -20,7 +20,7 @@ void printPatient(Patient *Patient);
 int calculatePriority(Patient *Patient); //complete 
 void addPatient(Patient **head, Patient *newPatient); 
 void displayPatients(Patient *head); 
-Patient* searchPatient(Patient *head, int patientID); 
+Patient* searchPatient(Patient *head, char *name); 
 void editPatient(Patient **Head); 
 void showNextPatient(Patient **head);
 void displayStatistics(Patient *head); 
@@ -187,7 +187,20 @@ void displayPatients(Patient *head){
 
 }
 
-Patient* searchPatient(Patient *head, int patientID){
+Patient* searchPatient(Patient *head, char *name){
+    
+    Patient *curr = head;
+
+    while (curr != NULL)
+    {
+        if (strcmp(curr->name, name) == 0)
+            return curr;
+
+        curr = curr->next;
+    }
+
+    printf("PATIENT NOT FOUND!!\n"); 
+    return NULL;
     
 }
 
