@@ -15,7 +15,7 @@ typedef struct Patient{
 //function prototypes
 void displayMenu(); //complete
 int isEmpty(Patient **head); 
-Patient* createPatient(); 
+Patient* createPatient(); //complete 
 void printPatient(Patient *Patient); 
 int calculatePriority(Patient *Patient); //complete 
 void addPatient(Patient **head, Patient *newPatient); 
@@ -24,7 +24,7 @@ Patient* searchPatient(Patient *head, char *name);
 void editPatient(Patient **Head); 
 void showNextPatient(Patient **head);
 void displayStatistics(Patient *head); 
-void freeList(Patient *head);
+void freeList(Patient *head); //complete 
 
 int main(){
     Patient *head = NULL; 
@@ -142,14 +142,14 @@ int calculatePriority(Patient *Patient){
 }
 
 void addPatient(Patient **head, Patient *newPatient){
-    newPatient->priority = calculatePriority(newPatient);
+    newPatient->priorityScore = calculatePriority(newPatient);
     if(*head == NULL){
         *head = newPatient; 
-        newPatient->next == NULL; 
+        newPatient->next = NULL; 
         return; 
     }
 
-    if(newPatient->priority > *head->priority){
+    if(newPatient->priorityScore > (*head)->priorityScore){
         newPatient->next = *head; 
         *head = newPatient; 
         return; 
@@ -157,7 +157,7 @@ void addPatient(Patient **head, Patient *newPatient){
 
     Patient *current = *head; 
  while (current->next != NULL &&
-           current->next->priority >= newPatient->priority)
+           current->next->priorityScore >= newPatient->priorityScore)
     {
         current = current->next;
     }
