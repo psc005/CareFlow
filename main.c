@@ -285,7 +285,6 @@ void editPatient(Patient** Head) {
     scanf("%s", searchName);
 
     if (*Head == NULL) {
-        free(searchName);
         return;
     }
 
@@ -353,8 +352,6 @@ void editPatient(Patient** Head) {
     } while (choice != 4);
 
     updatePriorities(Head);
-
-    free(searchName);
 }
 
 void showNextPatient(Patient **head){
@@ -426,4 +423,3 @@ void freeList(Patient *head){
         curr = next; 
     }
 }
-
