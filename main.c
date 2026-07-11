@@ -14,6 +14,7 @@ typedef struct Patient{
 
 //function prototypes
 void displayMenu(); //complete
+int isEmpty(Patient **head); 
 Patient* createPatient(); 
 void printPatient(Patient *Patient); 
 int calculatePriority(Patient *Patient); //complete 
@@ -71,6 +72,9 @@ void displayMenu(){
     printf("Please enter the number corresponding to the menu choice:\n\n");
     printf("1: Add new patient\n2: Get next patient\n3: Update patient information\n4: Display waitlist\n5: Display ER statistics\n6: Exit\n\n");
     
+}
+
+int isEmpty(Patient **head){
 }
 
 Patient* createPatient(){
