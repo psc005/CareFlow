@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 //patient stack 
 typedef struct Patient{
@@ -9,7 +10,7 @@ typedef struct Patient{
     int painLevel; 
     int severity; 
     int priorityScore;
-    int waitTime; 
+    time_t arrivalTime;
     struct Patient *next; 
 }Patient; 
 
