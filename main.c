@@ -15,6 +15,7 @@ typedef struct Patient{
 //function prototypes
 void displayMenu(); //complete
 Patient* createPatient(); 
+void printPatient(Patient *Patient); 
 int calculatePriority(Patient *Patient); //complete 
 void addPatient(Patient **head, Patient *newPatient); 
 void displayPatients(Patient *head); 
@@ -153,6 +154,10 @@ void addPatient(Patient **head, Patient *newPatient){
 
     newPatient->next = current->next;
     current->next = newPatient;
+}
+
+void printPatient(Patient *Patient){
+    
 }
 
 void displayPatients(Patient *head){
