@@ -300,6 +300,7 @@ void editPatient(Patient** Head) {
             printf("Enter new age:\n");
             scanf("%d", &newAge);
             found->age = newAge;
+            found->priorityScore = calculatePriority(found);
             break;
         }
         case 3: {
