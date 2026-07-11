@@ -12,7 +12,7 @@ typedef struct Patient{
 }Patient; 
 
 //function prototypes
-void displayMenu();
+void displayMenu(); //complete
 Patient* createPatient(); 
 int calculatePriority(Patient *Patient); 
 void addPatient(Patient **head, Patient *newPatient); 
