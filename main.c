@@ -22,7 +22,7 @@ void addPatient(Patient **head, Patient *newPatient);
 void displayPatients(Patient *head); 
 Patient* searchPatient(Patient *head, char *name); 
 void editPatient(Patient **Head); 
-void showNextPatient(Patient **head);
+void showNextPatient(Patient **head); //complete 
 void displayStatistics(Patient *head); //complete 
 void freeList(Patient *head); //complete 
 
