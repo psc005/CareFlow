@@ -79,23 +79,23 @@ int calculatePriority(Patient *Patient){
     int priority = 0; 
 
     //severity of condition 
-    if(Patient.severity == 3)
+    if(Patient->severity == 3)
         priority += 50; 
-    else if (Patient.severity == 2)
+    else if (Patient->severity == 2)
         priority += 30; 
     else
         priority += 10; 
 
     //age of patient 
-    if(Patient.age >= 65)
+    if(Patient->age >= 65)
         priority +=10; 
-    else if(Patient.age <= 12)
+    else if(Patient->age <= 12)
         priority += 5;
 
     //pain level patient 
-    if(Patient.painLevel > 5)
+    if(Patient->painLevel > 5)
         priority +=10; 
-    else if(Patient.painLevel <= 5)
+    else if(Patient->painLevel <= 5)
         priority += 5;
 
     return priority;
