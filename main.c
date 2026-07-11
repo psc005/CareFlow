@@ -66,3 +66,34 @@ return 0;
 
 }
 
+void displayMenu(){
+    printf("Please enter the number corresponding to the menu choice:");
+}
+
+Patient* createPatient(){
+}
+
+int calculatePriority(Patient *Patient){
+}
+
+void addPatient(Patient **head, Patient *newPatient){
+}
+
+void displayPatients(Patient *head){
+}
+
+Patient* searchPatient(Patient *head, int patientID){
+}
+
+void editPatient(Patient **Head){
+}
+
+void showNextPatient(Patient **head){
+}
+
+void displayStatistics(Patient *head){
+}
+
+void freeList(Patient *head){
+}
+
