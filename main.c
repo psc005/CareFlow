@@ -73,6 +73,37 @@ void displayMenu(){
 }
 
 Patient* createPatient(){
+        Patient* createPatient() {
+    char name[50];
+    int age;
+    int painLevel;
+    int priorityScore;
+
+    printf("Enter Name:\n");
+    scanf("%s", &name);
+    printf("Name: %s", name);
+
+    printf("Enter Age:\n");
+    scanf("%d", &age);
+    printf("Age: %d", age);
+
+    printf("Enter pain level:\n");
+    scanf("%d", &painLevel);
+    printf("Pain Level: %d", painLevel);
+
+    printf("Enter priority score:\n");
+    scanf("%d", &priorityScore);
+    printf("Priority Score: %d", priorityScore);
+    
+    Patient* newPatient = malloc(sizeof(Patient));
+    if (newPatient == NULL)
+        return NULL;
+
+    newPatient->age = age;
+    newPatient->painLevel = painLevel;
+    newPatient->priorityScore;
+    strcpy(newPatient->name, name);
+}
 }
 
 int calculatePriority(Patient *Patient){
