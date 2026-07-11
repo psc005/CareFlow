@@ -215,5 +215,7 @@ void displayStatistics(Patient *head){
 }
 
 void freeList(Patient *head){
+
+    
 }
 
