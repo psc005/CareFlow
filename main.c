@@ -28,30 +28,41 @@ int main(){
     Patient *head = NULL; 
     int choice; 
     displayMenu(); 
-    switch(choice){
+    do{
+        switch(choice){
         case 1:
-        //create a patient 
-        //calculate priority 
-        //add patient to the list 
-        break; 
+            //create a patient 
+            //calculate priority 
+            //add patient to the list 
+            break; 
 
         case 2:
-        //display all waiting patients
-        break; 
+            //display all waiting patients
+            break; 
 
         case 3:
-        //call the next patient 
-        break; 
+            //call the next patient 
+            break; 
 
         case 4:
-        //edit patient information 
-        break; 
+            //edit patient information 
+            break; 
 
         case 6:
-        //display statistics
-        break; 
+            //display statistics
+            break; 
 
         case 7:
-    }
+            //exit the program 
+            break;
+
+        
+        }
+    } while(choice != 7); 
+
+//free allocated memory 
+
+return 0; 
+
 }
 
