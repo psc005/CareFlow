@@ -14,7 +14,7 @@ typedef struct Patient{
 
 //function prototypes
 void displayMenu(); //complete
-int isEmpty(Patient **head); 
+int isEmpty(Patient **head); //complete 
 Patient* createPatient(); //complete 
 void printPatient(Patient *Patient); 
 int calculatePriority(Patient *Patient); //complete 
