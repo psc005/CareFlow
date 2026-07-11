@@ -2,6 +2,16 @@
 #include <stdlib.h>
 #include <string.h>
 
+//patient stack 
+typedef struct Patient{
+    int id; 
+    char name[50];
+    int age; 
+    int painLevel; 
+    int priorityScore;
+    struct Patient *next; 
+}Patient; 
+
 //function prototypes
 void displayMenu();
 Patient* createPatient(); 
@@ -13,16 +23,6 @@ void editPatient(Patient **Head);
 void showNextPatient(Patient **head);
 void displayStatistics(Patient *head); 
 void freeList(Patient *head);
-
-//patient stack 
-typedef struct Patient{
-    int id; 
-    char name[50];
-    int age; 
-    int painLevel; 
-    int priorityScore;
-    struct Patient *next; 
-}Patient; 
 
 int main(){
     Patient *head = NULL; 
