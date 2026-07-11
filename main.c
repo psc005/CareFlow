@@ -23,7 +23,7 @@ void displayPatients(Patient *head);
 Patient* searchPatient(Patient *head, char *name); 
 void editPatient(Patient **Head); 
 void showNextPatient(Patient **head);
-void displayStatistics(Patient *head); 
+void displayStatistics(Patient *head); //complete 
 void freeList(Patient *head); //complete 
 
 int main(){
