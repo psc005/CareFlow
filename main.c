@@ -73,7 +73,6 @@ void displayMenu(){
 }
 
 Patient* createPatient(){
-        Patient* createPatient() {
     char name[50];
     int age;
     int painLevel;
@@ -101,9 +100,8 @@ Patient* createPatient(){
 
     newPatient->age = age;
     newPatient->painLevel = painLevel;
-    newPatient->priorityScore;
+    newPatient->priorityScore = 0;
     strcpy(newPatient->name, name);
-}
 }
 
 int calculatePriority(Patient *Patient){
@@ -133,7 +131,28 @@ int calculatePriority(Patient *Patient){
 }
 
 void addPatient(Patient **head, Patient *newPatient){
-    
+    newPatient->priority = calculatePriority(newPatient);
+    if(*head == NULL){
+        *head = newPatient; 
+        newPatient->next == NULL; 
+        return; 
+    }
+
+    if(newPatient->priority > *head->priority){
+        newPatient->next = *head; 
+        *head = newPatient; 
+        return; 
+    }
+
+    Patient *current = *head; 
+ while (current->next != NULL &&
+           current->next->priority >= newPatient->priority)
+    {
+        current = current->next;
+    }
+
+    newPatient->next = current->next;
+    current->next = newPatient;
 }
 
 void displayPatients(Patient *head){
