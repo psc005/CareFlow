@@ -190,7 +190,6 @@ void updatePriorities(Patient **head){
 
 
 void addPatient(Patient **head, Patient *newPatient){
-    newPatient->priorityScore = calculatePriority(newPatient);
     if(*head == NULL){
         *head = newPatient; 
         newPatient->next = NULL; 
