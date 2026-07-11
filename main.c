@@ -30,56 +30,74 @@ void displayStatistics(Patient *head); //complete
 void freeList(Patient *head); //complete 
 
 int main(){
+
     Patient *head = NULL; 
     Patient *newPatient = NULL; 
     int choice; 
-    displayMenu(); 
-    
 
-    if (scanf("%d", &choice) != 1) {
-    printf("Invalid input.\n");
-    while(getchar() != '\n'); // clear bad input
-    continue;
-    }
-    
-    switch(choice){
-        case 1:
-            newPatient = createPatient(); 
-            if(newPatient){
-                addPatient(&head, newPatient); 
-                printf("Patient added successfully!\n"); 
-            }
-            break; 
 
-        case 2:
-            showNextPatient(&head); 
-            break; 
+    do {
 
-        case 3:
-            editPatient(&head); 
-            break; 
+        displayMenu();
 
-        case 4:
-            displayPatients(head); 
-            break; 
+        if(scanf("%d", &choice) != 1){
+            printf("Invalid input.\n");
 
-        case 5:
-            displayStatistics(head); 
-            break; 
+            while(getchar() != '\n');
 
-        case 6:
-            printf("Exiting the program...\n"); 
-            break;
+            continue;
+        }
 
-        default:
-            printf("Invalid choice.\n"); 
-        
-    }while(choice != 6);
 
-freeList(head); 
-    
-return 0; 
+        switch(choice){
 
+            case 1:
+                newPatient = createPatient();
+
+                if(newPatient){
+                    addPatient(&head, newPatient);
+                    printf("Patient added successfully!\n");
+                }
+
+                break;
+
+
+            case 2:
+                showNextPatient(&head);
+                break;
+
+
+            case 3:
+                editPatient(&head);
+                break;
+
+
+            case 4:
+                displayPatients(head);
+                break;
+
+
+            case 5:
+                displayStatistics(head);
+                break;
+
+
+            case 6:
+                printf("Exiting program...\n");
+                break;
+
+
+            default:
+                printf("Invalid choice.\n");
+        }
+
+
+    } while(choice != 6);
+
+
+    freeList(head);
+
+    return 0;
 }
 
 void displayMenu(){
@@ -103,7 +121,7 @@ Patient* createPatient() {
     int severity;
 
     printf("Enter Name: ");
-    scanf("%49s", name);
+    scanf(" %49[^\n]", name);
 
     printf("Enter Age: ");
     scanf("%d", &age);
@@ -163,7 +181,7 @@ int calculatePriority(Patient *Patient){
 }
 
 void updatePriorities(Patient **head){
-    if(isEmpty(head))
+    if(head == NULL || *head == NULL)
         return;
 
     Patient *current = *head;
@@ -225,6 +243,7 @@ void printPatient(Patient* patient) {
     printf("Age: %d\n", patient->age);
     printf("Pain Level: %d\n", patient->painLevel);
     printf("Priority Score: %d\n", patient->priorityScore);
+    printf("Severity: %d\n", patient->severity);
     printf("Wait Time: %d minutes\n", waitMinutes);
     printf("\n\n");
 }
@@ -261,7 +280,7 @@ Patient* searchPatient(Patient *head, char *name){
 }
 
 void editPatient(Patient** Head) {
-    char* searchName = malloc(50 * sizeof(char));
+    char searchName[50];
     printf("Enter a name:\n");
     scanf("%s", searchName);
 
@@ -272,7 +291,6 @@ void editPatient(Patient** Head) {
 
     Patient* found = searchPatient(*Head, searchName);
     if (found == NULL) {
-        free(searchName);
         return;
     }
 
@@ -284,14 +302,30 @@ void editPatient(Patient** Head) {
         scanf("%d", &choice);
 
         switch (choice) {
-        case 1: {
-            char* newName = malloc(50 * sizeof(char));
+        case 1:
+        {
+            char newName[50];
+        
             printf("Enter new name:\n");
-            scanf("%s", newName);
+            scanf("%49s", newName);
+        
+        
+            char *temp = malloc(strlen(newName)+1);
+        
+        
+            if(temp == NULL){
+                printf("Memory allocation failed.\n");
+                break;
+            }
+        
+        
+            strcpy(temp,newName);
+        
+        
             free(found->name);
-            found->name = malloc((strlen(newName) + 1) * sizeof(char));
-            strcpy(found->name, newName);
-            free(newName);
+        
+            found->name = temp;
+        
             break;
         }
         case 2: {
@@ -317,6 +351,8 @@ void editPatient(Patient** Head) {
         printPatient(found);
 
     } while (choice != 4);
+
+    updatePriorities(Head);
 
     free(searchName);
 }
@@ -347,7 +383,7 @@ void displayStatistics(Patient *head){
     int urgent = 0; 
     int nonUrgent = 0; 
 
-    Patient *highestPriority = head; 
+    
     Patient *curr = head; 
 
     while(curr){
@@ -368,8 +404,8 @@ void displayStatistics(Patient *head){
     printf("\nER Statistics:\n********************\n");
     printf("Total patients waiting: %d\n\n", totalPatients); 
     printf("Highest priority patient:\n"); 
-    printf("Name: %s\n", highestPriority->name); 
-    printf("Priority Score: %d\n\n", highestPriority->priorityScore); 
+    printf("Name: %s\n", head->name);
+    printf("Priority Score: %d\n", head->priorityScore);
     printf("Severity Breakdown:\n");
     printf("Critical: %d\n", critical);
     printf("Urgent: %d\n", urgent);
