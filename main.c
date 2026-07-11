@@ -88,35 +88,41 @@ int isEmpty(Patient** head) {
     return 0;
 }
 
-Patient* createPatient(){
-    char* name;
+Patient* createPatient() {
+
+    char name[50];
     int age;
     int painLevel;
-    int priorityScore;
+    int severity;
 
-    printf("Enter Name:\n");
-    scanf("%s", name);
+    printf("Enter Name: ");
+    scanf("%49s", name);
 
-    printf("Enter Age:\n");
+    printf("Enter Age: ");
     scanf("%d", &age);
 
-    printf("Enter pain level:\n");
+    printf("Enter Pain Level (1-10): ");
     scanf("%d", &painLevel);
 
-    printf("Enter priority score:\n");
-    scanf("%d", &priorityScore);
-    
-    Patient* newPatient = malloc(sizeof(Patient));
+    printf("Enter Severity (1 = Non-Urgent, 2 = Urgent, 3 = Critical): ");
+    scanf("%d", &severity);
+
+    Patient *newPatient = malloc(sizeof(Patient));
     if (newPatient == NULL)
         return NULL;
 
+    newPatient->name = malloc(strlen(name) + 1);
+    if (newPatient->name == NULL) {
+        free(newPatient);
+        return NULL;
+    }
+
+    strcpy(newPatient->name, name);
+
     newPatient->age = age;
     newPatient->painLevel = painLevel;
-    newPatient->priorityScore = priorityScore;
-    char* ptr = malloc((strlen(name) + 1) * sizeof(char));
-    if (ptr == NULL)
-        return NULL;
-    strcpy(newPatient->name, ptr);
+    newPatient->severity = severity;
+    newPatient->priorityScore = calculatePriority(newPatient);
     newPatient->arrivalTime = time(NULL);
     newPatient->next = NULL;
 
