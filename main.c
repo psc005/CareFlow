@@ -117,7 +117,7 @@ Patient* createPatient(){
     if (ptr == NULL)
         return NULL;
     strcpy(newPatient->name, ptr);
-    newPatient->waitTime = 0;
+    newPatient->arrivalTime = time(NULL);
     newPatient->next = NULL;
 
     return newPatient;
