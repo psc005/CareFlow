@@ -17,6 +17,7 @@ typedef struct Patient{
 void displayMenu(); //complete
 int isEmpty(Patient **head); //complete 
 Patient* createPatient(); //complete 
+void updateWaitTimes(Patient **head);
 void printPatient(Patient *Patient); //complete 
 int calculatePriority(Patient *Patient); //complete 
 void addPatient(Patient **head, Patient *newPatient); //complete 
@@ -119,6 +120,9 @@ Patient* createPatient(){
     newPatient->next = NULL;
 
     return newPatient;
+}
+
+void updateWaitTimes(Patient **head){
 }
 
 int calculatePriority(Patient *Patient){
