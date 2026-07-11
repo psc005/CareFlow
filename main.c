@@ -62,8 +62,8 @@ int main(){
         }
     } while(choice != 7); 
 
-//free allocated memory 
-
+freeList(head); 
+    
 return 0; 
 
 }
@@ -222,6 +222,13 @@ void displayStatistics(Patient *head){
 
 void freeList(Patient *head){
 
-    
+    Patient *curr = head; 
+    Patient *next; 
+
+    while(!curr){
+        next = curr->next; 
+        free(curr); 
+        curr = next; 
+    }
 }
 
